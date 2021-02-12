@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+  /*le dice al navegador tomar en cuenta para cualquier valor que se 
+  especifique de borde o de relleno para el ancho o alto de un elemento*/
+  font-family: "Muli", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  flex-direction: row;
+
+  
+  height: 100vh;
+  overflow: hidden; /*El contenido es recortado y no se muestran barras de posición*/
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover; 
+  /*Escala la imagen al mayor tamaño posible sin estirarla.*/
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  height: 80vh;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 50px;
+  flex: 0.5;
+  /*La propiedad flex como tal se usa para que cada uno de los paneles tenga un mismo 
+  tamaño segun el espacion a favor, ademas esto es modificable como se va luego*/
+  position: relative;
+
+  transition: flex 0.7s ease-out; 
+  /*rápido / abrupto al principio, lento al final*/
+}
+
+.panel h3 {
+  font-size: 24px;
+  margin-top: 450px;
+  margin-left: 20px;
+  opacity: 0;
+  bottom: 20px;
+  position: absolute;
+  transition: opacity 0s ease-out;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.5s ease-out .5s; 
+  /*rápido / abrupto al principio, lento al final*/
+}
+
+
+
+/*resposnive*/
+@media screen and (max-width: 480px) {
+	.container {
+		width: 100vw;
+	}
+  /*selecciona uno o más elementos de un tipo dado, en función de su posición 
+  entre un grupo de hermanos.*/
+	.panel:nth-of-type(4) { 
+		display: none;
+  }
+  /*:nth-of-type()= Una pseudoclase CSS es una palabra clave que se añade a los
+   selectores y que especifica un estado especial del elemento seleccionado.*/
+	
+	.panel:nth-of-type(5) {
+		display: none;
+	}
+}
